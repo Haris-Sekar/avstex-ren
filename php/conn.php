@@ -1,16 +1,16 @@
 <?php
 //data base connection esablishment
 
-$host="localhost";
-$username="root";
-$password="";
-$dbname="avstex_ren";
+// $host="localhost";
+// $username="root";
+// $password="";
+// $dbname="avstex_ren";
 
 // //infinity free db connection
-// $host="sql312.epizy.com";
-// $username="epiz_29179456";
-// $password="BOW9m6bqRrK";
-// $dbname="epiz_29179456_avstex";
+$host="sql312.epizy.com";
+$username="epiz_29179456";
+$password="BOW9m6bqRrK";
+$dbname="epiz_29179456_avstex";
 
 
 
