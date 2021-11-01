@@ -27,24 +27,38 @@ include("./not_logged_in.php");
 
 <?php
 
-if(isset($_POST['submit'])){
-    $uname=$_POST['username'];
-    $pass=md5($_POST['password']);
 
-    $sql_login_admin="SELECT * FROM admin WHERE email='$uname' OR phone='$uname'";
-    $res_login_admin=mysqli_query($conn,$sql_login_admin);
-    $row=mysqli_fetch_array($res_login_admin,MYSQLI_ASSOC);
-    $password=$row['password'];
-    if($pass==$password){
-        header("location: admin_home.php");
-    }
-    else{
-        ?>
-            <script>
-                document.getElementById('a1').style.visibility="visible";
-            </script>
-        <?php
-    }
+
+    if(isset($_POST['submit'])){
+        $username=$_POST['username'];
+        $password=md5($_POST['password']);
+        //admin verification
+        $admin_sql="SELECT * FROM admin WHERE email='$username' OR phone='$username'";
+        $admin_res=mysqli_query($conn,$admin_sql);
+        $admin_row=mysqli_fetch_array($admin_res,MYSQLI_ASSOC);
+        $admin_pass=$admin_row['password'];
+        $sql_login="SELECT * FROM users_details WHERE email='$username' OR mobile='$username'";
+        $res_login=mysqli_query($conn,$sql_login);
+        $row=mysqli_fetch_array($res_login,MYSQLI_ASSOC);
+        $con_pass=$row['password'];
+        if($password==$admin_pass){
+            session_start();
+            $_SESSION['username']=$username;
+            header("location: admin_home.php");
+        }
+        else if($con_pass==$password){
+            session_start();
+            $_SESSION['username']=$username;
+            header("location: home.php");
+        }
+        else{
+            ?>
+                <script>
+                    document.getElementById('a1').style.visibility="visible";
+                </script>
+            <?php
+        }
+    
 }
 
 ?>

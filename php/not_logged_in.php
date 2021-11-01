@@ -19,7 +19,7 @@ include("./conn.php");
                 <a href="./login.php"><li id="nav_items">Login</li></a>
                 <a href=""><li id="nav_items">About us</li></a>
                 <a href=""><li id="nav_items">Collections</li></a>
-                <a href="   ../index.php"><li id="nav_items">Home</li></a>
+                <a href="../index.php"><li id="nav_items">Home</li></a>
             </ul>
         </div>
     </div>
